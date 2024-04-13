@@ -1,0 +1,307 @@
+@import url('https://use.fontawesome.com/releases/v5.12.0/css/all.css');
+:root{
+    /* Color Variables */
+  --background-color: rgba(250, 251, 244, 1);
+  --sapphire: hsla(221, 65%, 41%, 1);
+  --cadet-gray: hsla(216, 11%, 63%, 1);
+  --yale-blue: hsla(216, 59%, 25%, 1);
+  --black: hsla(210, 50%, 1%, 1);
+  --sapphire-h: hsla(221, 65%, 41%, 1);
+  --cadet-gray-h: hsla(216, 11%, 63%, 1);
+  --yale-blue-h: hsla(216, 59%, 25%, 1);
+  --black-h: hsla(210, 50%, 1%, 1);
+  --radient-top: linear-gradient(0deg, #254fadff, #979fabff, #1a3866ff, #010203ff);
+  --gradient-right: linear-gradient(90deg, #254fadff, #979fabff, #1a3866ff, #010203ff);
+  --gradient-bottom: linear-gradient(180deg, #254fadff, #979fabff, #1a3866ff, #010203ff);
+  --gradient-left: linear-gradient(270deg, #254fadff, #979fabff, #1a3866ff, #010203ff);
+  --gradient-top-right: linear-gradient(45deg, #254fadff, #979fabff, #1a3866ff, #010203ff);
+  --gradient-bottom-right: linear-gradient(135deg, #254fadff, #979fabff, #1a3866ff, #010203ff);
+  --gradient-top-left: linear-gradient(225deg, #254fadff, #979fabff, #1a3866ff, #010203ff);
+  --gradient-bottom-left: linear-gradient(315deg, #254fadff, #979fabff, #1a3866ff, #010203ff);
+  --gradient-radial: radial-gradient(#254fadff, #979fabff, #1a3866ff, #010203ff);
+
+}
+input:focus {
+    outline: none;
+}
+
+.navbar {
+    padding: 10px 0;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+}
+
+.navbar-nav {
+    flex-direction: row;
+}
+
+.navbar-nav .nav-item {
+    margin-right: 10px;
+}
+
+.navbar-nav .btn {
+    width: 50px;
+    padding: 8px 20px;
+    font-size: 1rem;
+}
+
+input[type=checkbox] {
+    margin-right: 5px;
+    cursor: pointer;
+    width: auto;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#main-container {
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    font-family: 'calibri';
+    justify-content: center;
+    background-color: var(--background-color);
+}
+
+.form-container {
+    width: 400px;
+    height: 600px;
+    position: relative;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
+.login-form,
+.signup-form {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    overflow: hidden;
+    text-align: center;
+    position: absolute;
+    border-radius: 20px;
+    background: var(--cadet-gray);
+    animation: .8s ease-in-out forwards
+}
+
+.login-form {
+    transform: translate3d(0px, 0, 0px);
+}
+
+.signup-form {
+    transform: translate3d(0px, 0, -200px);
+}
+
+.login-form::before,
+.signup-form::before {
+    content: "";
+    position: absolute;
+    left: -50%;
+    bottom: -5%;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    transform: rotate(46deg);
+    background-color: var(--sapphire);
+    opacity: 0.2;
+}
+
+.login-form::after,
+.signup-form::after {
+    content: "";
+    position: absolute;
+    right: -50%;
+    top: -5%;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    transform: rotate(90deg);
+    background-color: var(--sapphire);
+    opacity: 0.2;
+}
+
+.title {
+    font-size: 30px;
+    color: var(--background-color);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.field {
+    position: relative;
+    margin-top: 50px;
+}
+
+form input {
+    border: none;
+    border-bottom: 1px solid var(--sapphire);
+    background: transparent;
+    width: 100%;
+    padding: 0 30px 5px 0;
+}
+
+.field label {
+    left: 0;
+    bottom: 5px;
+    cursor: text;
+    transition: .3s;
+    position: absolute;
+}
+
+.field .fa {
+    right: 1%;
+    position: absolute;
+}
+
+.toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 0px;
+    transform: translateY(-50%);
+    border: none;
+    color: var(--cadet-gray);
+    background: none;
+    cursor: pointer;
+  }
+
+
+
+.field input:focus+label,
+.field input:not(:placeholder-shown)+label {
+    bottom: 25px;
+}
+
+section {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0 50px 0;
+    font-size: 15px;
+}
+
+section label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: var(--yale-blue);
+}
+
+.button-user {
+    position: absolute;
+    font-size: 2rem;
+}
+
+.login-btn,
+.signup-btn {
+    width: 100%;
+    border: none;
+    font-size: 20px;
+    position: relative;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: .3s;
+    color: var(--background-color);
+    background: var(--sapphire);
+    padding: 5px;
+}
+
+.login-btn {
+    margin: 0 0 35px 0;
+}
+
+.login-btn:hover,
+.signup-btn:hover {
+    color: var(--sapphire);
+    background-color: var(--background-color);
+    opacity: .9;
+}
+
+.bottom {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.other {
+    margin: 10px 0 30px;
+}
+
+
+
+.signup-form .field {
+    margin-top: 40px;
+}
+
+
+.signup-form section {
+    margin: 20px 0 10px 0;
+}
+
+.signup-btn {
+    margin: 20px 0;
+}
+
+.signup-form .bottom {
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.above {
+    animation-name: above;
+}
+
+.below {
+    animation-name: below;
+}
+
+@keyframes above {
+    0% {
+        transform: translate3d(0, 0, -500px);
+    }
+
+    50% {
+        transform: translate3d(70%, 0, -100px);
+    }
+
+    100% {
+        transform: translate3d(0px, 0, 0px);
+    }
+}
+
+@keyframes below {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    50% {
+        transform: translate3d(-70%, 0, 0px);
+    }
+
+    100% {
+        transform: translate3d(0px, 0, -200px);
+    }
+}
+
+
+@media (max-width: 768px) {
+    .navbar-nav .btn {
+        margin-top: 5px;
+    }
+}

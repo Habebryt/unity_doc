@@ -1,0 +1,155 @@
+note
+<section class="review">
+        <div class="row">
+            <div class="col-12">
+                <h2>What people are saying</h2>
+                <p>What our lovely customers said for our Product.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <div class="glider-container">
+                    <div class="glider">
+                        <div class="feedback-card">
+                            <div class="quotation-mark"></div>
+                            <div class="feedback-content">
+                                <p>Good and effiecinet document management with very professional outlay and looks.</p>
+                                <h2>Habeeb Bright</h2>
+                                <p>Partnership Lead</p>
+                            </div>
+                        </div>
+                        <div class="feedback-card">
+                            <div class="quotation-mark"></div>
+                            <div class="feedback-content">
+                                <p>Good and effiecinet document management with very professional outlay and looks.</p>
+                                <h2>Bright Habeeb</h2>
+                                <p>COE MediSynch</p>
+                            </div>
+                        </div>
+                        <!-- Add more feedback cards here -->
+                    </div>
+                    <button class="glider-prev">&lt;</button>
+                    <button class="glider-next">&gt;</button>
+                </div>
+
+            </div>
+            <div class="col-4">
+                <div class="circle-container" id="circleContainer">
+                    
+                  </div>
+                  
+            </div>
+        </div>
+    </section>
+
+    .feedback-card {
+        position: relative;
+        background-color: #f0f0f0;
+        padding: 20px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    
+    .feedback-card {
+        background-color: #f0f0f0;
+        padding: 20px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+    }
+    
+    .quotation-mark {
+        position: absolute;
+        top: -20px;
+        left: -20px;
+        font-size: 48px;
+        color: rgba(0, 0, 0, 0.1);
+    }
+    
+    .feedback-content {
+        padding-left: 40px;
+    }
+    
+    
+    .glider-container {
+        position: relative;
+        width: 300px;
+        /* Adjust width as needed */
+        margin: 0 auto;
+        overflow: hidden;
+    }
+    
+    .glider {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    
+    .glider-prev,
+    .glider-next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #007bff;
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+    }
+    
+    .glider-prev {
+        left: 0;
+    }
+    
+    .glider-next {
+        right: 0;
+    }
+    
+    .circle-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 300px; /* Adjust as needed */
+        height: 300px; /* Adjust as needed */
+        border-radius: 50%;
+        overflow: hidden;
+        background-color: #f0f0f0; /* Adjust as needed */
+      }
+      
+      .circle-container img {
+        width: 80px; /* Adjust as needed */
+        height: 80px; /* Adjust as needed */
+        border-radius: 50%;
+        margin: 10px; /* Adjust as needed */
+      }
+  
+      window.addEventListener('load', function () {
+        new Glider(document.querySelector('.glider'), {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            draggable: true,
+            dots: '.dots',
+            arrows: {
+                prev: '.glider-prev',
+                next: '.glider-next'
+            }
+        });
+    });
+    
+    
+    // Add your image URLs here
+    const imageUrls = [
+        'general/images/feedback/customer_one.jpg',
+        'general/images/feedback/customer_one.jpg',
+        'general/images/feedback/customer_one.jpg',
+        // Add more image URLs as needed
+    ];
+    
+    const container = document.getElementById('circleContainer');
+    
+    // Create and append img elements to the container
+    imageUrls.forEach(url => {
+        const img = document.createElement('img');
+        img.src = url;
+        container.appendChild(img);
+    });

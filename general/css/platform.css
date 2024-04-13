@@ -1,0 +1,227 @@
+.platform-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.content {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.content h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.content p {
+    margin-bottom: 15px;
+}
+
+.content ul {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.content li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.content li i {
+    margin-right: 10px;
+    color: var(--sapphire);
+}
+
+.learn-more {
+    padding: 10px 20px;
+    background-color: var(--sapphire);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.image-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.top-freelancer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.top-freelancer img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: -10px;
+}
+
+.top-freelancer span {
+    background-color: var(--sapphire);
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.main-image img {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.social-media {
+    display: flex;
+    margin-top: -110px;
+    margin-left: -200px;
+    max-width: 150px;
+    flex-wrap: wrap;
+    border-radius: 5px;
+    background-color: white;
+    height: 200px;
+    padding: 10px;
+    color: black;
+  }
+  
+  .social-item {
+    display: flex;
+    align-items: center;
+    margin: 10px 10px;
+  }
+  
+  .social-item i {
+    font-size: 24px;
+    margin-right: 10px;
+  }
+  
+  .social-text {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .social-text span:first-child {
+    font-weight: bold;
+  }
+  
+  .social-text span:last-child {
+    font-size: 12px;
+    color: gray;
+  }
+
+.platform-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.platform-top .image-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-right: 20px;
+}
+
+.platform-top .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.platform-top .header select {
+    padding: 5px;
+}
+
+
+.platform-top .image-section img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.platform-top .expert-team {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.platform-top .team-members {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.platform-top .team-members img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: -5px;
+}
+
+.platform-top .more-members {
+    background-color: var(--sapphire);
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.platform-top .content-section {
+    flex: 1;
+    padding-left: 20px;
+}
+
+.platform-top .content-section h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.platform-top .content-section p {
+    margin-bottom: 15px;
+}
+
+.platform-top .content-section ul {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.platform-top .content-section li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.platform-top .content-section li i {
+    margin-right: 10px;
+    color: var(--sapphire);
+}
+
+.platform-top .learn-more {
+    padding: 10px 20px;
+    background-color: var(--sapphire);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+

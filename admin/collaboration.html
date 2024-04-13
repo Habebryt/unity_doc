@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../general/bootstrap/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://kit.fontawesome.com/6b3bb32019.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2 vh-100 sidebar">
+                <div class="">
+                    <div class="logo col-md-12">
+                        <img src="../general/images/logo/unitydocs_black.png" alt="Logo">
+                       
+                    </div>
+                    <nav class="menu">
+                        <a href="dashboard.html"><i class="fas fa-th-large"></i> Dashboard</a>
+                        <a href="document.html"><i class="fa-solid fa-file"></i> Documents</a>
+                        <a href="organization.html"><i class="fa-regular fa-building"></i> Organization</a>
+                        <a href="collaboration.html" class="active"><i class="fa-solid fa-people-group"></i> Collaboration</a>
+                        <a href="Notification.html"><i class="fas fa-bell"></i> Notifications <span
+                                class="notification-count">99</span></a>
+                        <a href="chat.html"><i class="fa-solid fa-comments"></i> Chat</a>
+                        <a href="access.html"><i class="fa-solid fa-eye"></i> Access Control</a>
+                        <a href="help.html"><i class="fa-solid fa-headset"></i> Help & Support</a>
+                        <a href="settings.html"><i class="fa-solid fa-gears"></i> Settings</a>
+                        <a href="../general/index.html"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                    </nav>
+                </div>
+                <div class="user-info">
+                    <a href="userprofile.html">
+                        <div class="user-avatar">
+                            <img src="../general/images/feedback/customer_10.jpg" alt="User Avatar">
+                        </div>
+                        <div class="user-details">
+                            <span class="user-name">John Blessing</span>
+                            <span class="user-email">jb@unitydocs.com</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="row mt-1">
+                    <div class="col-md-12">
+                        <div class="header">
+                            <div class="search-bar">
+                                <input type="text" placeholder="Search">
+                            </div>
+                            <div class="date">Monday, 1st April</div>
+                            <div class="view-toggle">
+                                <button class="active sort-doc"><i class="fa-solid fa-sliders"></i> Sort</button>
+                                <button class="add-doc"  id="openModalBtn"><i class="fa-solid fa-circle-plus"></i> Add Document</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="last-tasks">
+                        <div class="col-md-12">
+                            <div class="row mb-2">
+                                <div class="col-md-12">
+                                    <div class="row justify-content-evenly">
+                                        <div class="col-md-10 d-block justify-content-center">
+                                            <span class="task-num">Last tasks </span>
+                                            <p><span class="task-span">117 total,</span> proceed to resolve them</p>
+                                        </div>
+                                        <div class="col-1 done justify-content-center task-border">
+                                            <span class="task-num">94</span>
+                                            <p>Done</p>
+                                        </div>
+                                        <div class="col-1 in-progress justify-content-center">
+                                            <span class="task-num">23</span>
+                                            <p>In progress</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Document</th>
+                                                <th>Owner</th>
+                                                <th>Members</th>
+                                                <th>Status</th>
+                                                <th>Upload Date</th>
+                                                <th>Due date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>ClientOnboarding - Circle</td>
+                                                <td class="admin">
+                                                    <div class="admin-img">
+                                                        <img src="../general/images/feedback/customer_three.jpg" alt="Admin">
+                                                    </div>
+                                                    <p class="admin-name"> Blessing <span>J.</span></p>
+                                                </td>
+                                                <td>3</td>
+                                                <td><span class="status in-progress"><i class="fa-regular fa-clock"></i> In progress</span></td>
+                                                <td>6 hours</td>
+                                                <td>6 Mon</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Meeting with Webflow &amp; Notion</td>
+                                                <td class="admin">
+                                                    <div class="admin-img">
+                                                        <img src="../general/images/feedback/customer_one.jpg" alt="Admin">
+                                                    </div>
+                                                    <p class="admin-name"> Joy <span>F.</span></p>
+                                                </td>
+                                                <td>4</td>
+                                                <td><span class="status rejected"><i class="fa-regular fa-circle-xmark"></i> Rejected</span></td>
+                                                <td>2 hours</td>
+                                                <td>7 Tue</td>
+                                            </tr>
+                                            <tr>
+                                                <td>First Handoff with Engineers</td>
+                                                <td class="admin">
+                                                    <div class="admin-img">
+                                                        <img src="../general/images/feedback/customer_five.jpg" alt="Admin">
+                                                    </div>
+                                                    <p class="admin-name"> Udoka <span>A.</span></p>
+                                                </td>
+                                                <td>10</td>
+                                                <td><span class="status done"><i class="fa-regular fa-circle-check"></i> Done</span></td>
+                                                <td>3 days</td>
+                                                <td>10 Fri</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Client Drafting (2) with Lawrence</td>
+                                                <td class="admin">
+                                                    <div class="admin-img">
+                                                        <img src="../general/images/feedback/customer_9.png" alt="Admin">
+                                                    </div>
+                                                    <p class="admin-name"> Precious <span>P.</span></p>
+                                                </td>
+                                                <td>7</td>
+                                                <td><span class="status review"><i class="fa-solid fa-magnifying-glass"></i> In Review</span></td>
+                                                <td>1 week</td>
+                                                <td>19 Sun</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-6">
+                        <div class="productivity">
+                            <h3>Productivity</h3>
+                            <p>01-07 May <span>Data updates every 3 hours</span></p>
+                            <div class="chart">
+                                <canvas id="productivityChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="projects-in-progress">
+                            <h3>Documents in progress:</h3>
+                            <div class="project-card mt-2">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="project-header">
+                                            <span class="category">Feedback</span>
+                                            <span class="category">Bug</span>
+                                            <span class="category">Design System</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="project-title">Improve cards readability</div>
+                                        <div class="project-date">21.03.22</div>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center align-content-center">
+                                    <div class="col-md-6">
+                                        <div class="expert-team">
+                                            <div class="team-members">
+                                                <img src="../general/images/feedback/customer_13.jpg" alt="Profile 1">
+                                                <img src="../general/images/feedback/customer_one.jpg" alt="Profile 2">
+                                                <span class="more-members">+8</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 d-flex justify-content-center align-content-center">
+                                        <div class="project-stats">
+                                            <span><i class="fas fa-comment"></i> 12 comments</span>
+                                            <span><i class="fas fa-file"></i> 6 files</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="addDocumentModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Add Document</h2>
+          <form id="documentForm">
+            <label for="fileUpload">Upload File:</label>
+            <input type="file" id="fileUpload" name="fileUpload" accept=".pdf,.doc,.docx" required>
+            <label for="docName">Document Name:</label>
+            <input type="text" id="docName" name="docName" required>
+            <label for="tag">Tag:</label>
+            <input type="text" id="tag" name="tag">
+            <div class="button-container">
+              <button type="submit" id="uploadBtn">Upload</button>
+              <button type="button" id="closeBtn">Close</button>
+              <button type="button" id="shareBtn">Share</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../general/bootstrap/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="../general/css/style.css">
+    <link rel="stylesheet" href="accesspage.css">
+    <title>Welcome to UnityDocs</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../general/index.html">UnityDocs</a>
+            <div class="d-flex">
+                <div class="m-auto">
+                    <button class="btn btn-outline-light"><a href="../general/blog/blog_index.html">To-Blog</a></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="main-container" class="mt-5">
+        <div class="form-container">
+            <div class="login-form">
+                <div class="title">Login Here</div>
+                <form action="dashboard.html" method="get">
+                    <div class="field">
+                        <input type="email" id="email-address" placeholder=" " required autocomplete="on">
+                        <label for="email-address">Email</label>
+                        <i class="fa fa-envelope"></i>
+                    </div>
+
+                    <div class="field">
+                        <input type="password" id="create-pass" required placeholder=" " autocomplete="on">
+                        <label for="create-pass">Password</label>
+                        <button class="toggle-password" type="button" data-target="create-pass">
+                            <i id="toggleIcon-create-pass" class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <section>
+                        <label for="remember"><input type="checkbox" id="remember">Remember Me</label>
+                        <a href="#">Forget Password?</a>
+                    </section>
+
+                    <button class="login-btn button-user">Login</button>
+                </form>
+
+                <div class="bottom">
+                    <div>Don't have an Account?&nbsp;<a class="signup-switch" onclick="swapPos(this)">Sign up</a></div>
+                </div>
+            </div>
+            <div class="signup-form">
+                <div class="title">Signup Now</div>
+                <form form action="company_staff.html" method="get">
+                    <div class="field">
+                        <input type="text" id="name" placeholder=" " required>
+                        <label for="name">Name</label>
+                        <i class="fa fa-user"></i>
+                    </div>
+
+                    <div class="field">
+                        <input type="email" id="user-email" placeholder=" " required autocomplete="on">
+                        <label for="user-email">Company Email</label>
+                        <i class="fa fa-envelope"></i>
+                    </div>
+
+                    <div class="field">
+                        <input type="password" id="reg-pass" required placeholder=" " autocomplete="off">
+                        <label for="reg-pass">New Password</label>
+                        <button class="toggle-password" type="button" data-target="reg-pass">
+                          <i id="toggleIcon-reg-pass" class="fas fa-eye"></i>
+                        </button>
+                      </div>
+
+
+                    <div class="field">
+                        <input type="password" id="confirm-pass" required placeholder=" " autocomplete="off">
+                        <label for="confirm-pass">Confirm Password</label>
+                        <button class="toggle-password" type="button" data-target="confirm-pass">
+                            <i id="toggleIcon-confirm-pass" class="fas fa-eye"></i>
+                        </button>
+                    </div>
+
+                    <div class="field">
+                        <input type="text" id="organization" placeholder=" " required>
+                        <label for="organization">Company Name</label>
+                        <i class="fa fa-building"></i>
+                    </div>
+
+
+                    <section>
+                        <label for="agree"><input type="checkbox" id="agree">I agree to all&nbsp;<a href="#">Terms &
+                                Conditions</a></label>
+                    </section>
+                    <button class="signup-btn button-user">Register</button>
+                </form>
+
+                <div class="bottom">
+                    <span>Already Registered?&nbsp;<a class="login-switch" onclick="swapPos(this)">Login</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- copyright section starts here -->
+    <section class="copyright">
+        <div class="row justify-content-center">
+            <div class="col-md-12 d-flex just">
+                <p>&copy; 2024. <span><a href="">UnityDocs.</a></span> All rights reserved. Presented by Habeeb Bright.
+                </p>
+            </div>
+        </div>
+    </section>
+    <!-- copyright section ends here -->
+
+    <script src="../general/js/jquery-3.7.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="accesspage.js">
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+:root {
+
+    /* Color Variables */
+    --background-color: rgba(250, 251, 244, 1);
+    --sapphire: hsla(221, 65%, 41%, 1);
+    --cadet-gray: hsla(216, 11%, 63%, 1);
+    --faded-gray: rgb(162, 171, 183);
+    --cadet-gray-light: rgb(223, 229, 236);
+    --yale-blue: hsla(216, 59%, 25%, 1);
+    --black: hsla(210, 50%, 1%, 1);
+    --sapphire-h: hsla(221, 65%, 41%, 1);
+    --cadet-gray-h: hsla(216, 11%, 63%, 1);
+    --yale-blue-h: hsla(216, 59%, 25%, 1);
+    --black-h: hsla(210, 50%, 1%, 1);
+
+    /* button variables */
+    --button-primary: var(--sapphire);
+    --button-secondary: var(--background-color);
+    --button-readmore: var(--yale-blue);
+    --button-seemore: var(--cadet-gray);
+
+    /* button hovers */
+    --button-primary-hover: var(--background-color);
+    --button-secondary-hover: var(--background-color);
+    --button-readmore-hover: var(--background-color);
+    --button-seemore-hover: var(--background-color);
+
+    /* button hovers border */
+    --button-primary-hover-border: var(--sapphire);
+    --button-secondary-hover-border: var(--background-color);
+    --button-readmore-hover-border: var(--yale-blue);
+    --button-seemore-hover-border: var(--cadet-gray);
+
+    /* gradient variables */
+    --radient-top: linear-gradient(0deg, #254fadff, #979fabff, #1a3866ff, #010203ff);
+    --gradient-right: linear-gradient(90deg, #254fadff, #979fabff, #1a3866ff, #010203ff);
+    --gradient-bottom: linear-gradient(180deg, #254fadff, #979fabff, #1a3866ff, #010203ff);
+    --gradient-left: linear-gradient(270deg, #254fadff, #979fabff, #1a3866ff, #010203ff);
+    --gradient-top-right: linear-gradient(45deg, #254fadff, #979fabff, #1a3866ff, #010203ff);
+    --gradient-bottom-right: linear-gradient(135deg, #254fadff, #979fabff, #1a3866ff, #010203ff);
+    --gradient-top-left: linear-gradient(225deg, #254fadff, #979fabff, #1a3866ff, #010203ff);
+    --gradient-bottom-left: linear-gradient(315deg, #254fadff, #979fabff, #1a3866ff, #010203ff);
+    --gradient-radial: radial-gradient(#254fadff, #979fabff, #1a3866ff, #010203ff);
+
+
+    /* Margin Variable */
+    --margin: 20px;
+    --margin-top: 20px;
+    --margin-bottom: 20px;
+    --margin-left: 20px;
+    --margin-right: 20px;
+
+    /* card margins */
+    --card-margin: 10px;
+    --card-margin-top: 10px;
+    --card-margin-right: 10px;
+    --card-margin-left: 10px;
+    --card-margin-bottom: 10px;
+
+    /* Padding Variable */
+    --padding: 20px;
+    --padding-top: 20px;
+    --padding-bottom: 20px;
+    --padding-left: 20px;
+    --padding-right: 20px;
+
+    /* card padding */
+    --card-padding: 20px;
+    --card-padding-top: 20px;
+    --card-padding-right: 20px;
+    --card-padding-bottom: 20px;
+    --card-padding-left: 20px;
+
+    /* section margins */
+    --section-margin: 50px;
+    --section-margin-top: 50px;
+    --section-margin-bottom: 50px;
+
+    /* borders */
+    --border: 1px solid var(--sapphire);
+    --border-left: 1px solid var(--sapphire);
+    --border-right: 1px solid var(--sapphire);
+    --border-top: 1px solid var(--sapphire);
+    --border-bottom: 1px solid var(--sapphire);
+    --card-radius: 10px;
+    --button-radius: 5px;
+}

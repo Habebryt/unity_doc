@@ -1,0 +1,213 @@
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: calc(100vh - 80px);
+  background: var(--background-color);
+  color: var(--sapphire);
+  padding: 40px;
+  overflow: hidden;
+}
+
+.hero-content {
+  max-width: 500px;
+  z-index: 1;
+}
+
+.hero-content h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.hero-title {
+  color: var(--sapphire);
+}
+
+.hero-sub {
+  color: var(--yale-blue);
+}
+
+.hero-content h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.animated-text {
+  color: #e6e6e6;
+  transition: color 0.5s ease;
+}
+
+.changing-text {
+  animation: changeText 16s infinite;
+}
+
+@keyframes changeText {
+
+  0%,
+  25% {
+    color: var(--sapphire);
+  }
+
+  25%,
+  50% {
+    color: var(--yale-blue);
+  }
+
+  50%,
+  75% {
+    color: var(--cadet-grey);
+  }
+
+  75% {
+    color: var(--black);
+  }
+}
+
+.hero-content p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.moving-border {
+  position: relative;
+  padding: 10px 20px;
+  font-size: 1em;
+  border: 2px solid var(--sapphire);
+  border-radius: var(--button-radius);
+  cursor: pointer;
+  overflow: hidden;
+  color: var(--sapphire);
+  animation: changeBorderColor 15s infinite;
+}
+
+.moving-border:hover {
+  position: relative;
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: var(--sapphire);
+  border: 2px solid;
+  border-radius: var(--button-radius);
+  cursor: pointer;
+  overflow: hidden;
+  color: white;
+  animation: changeBorderColor 15s infinite;
+}
+
+.hero-image {
+  position: relative;
+  width: 50%;
+  z-index: 0;
+}
+
+.hero-image img {
+  max-width: 100%;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  height: auto;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));
+}
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .hero-title {
+    display: none;
+  }
+
+  .logo img {
+    display: block;
+  }
+
+  .logo a span {
+    display: block;
+    font-size: 1rem;
+    font-weight: 700;
+    align-items: left;
+    color: var(--sapphire);
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .hero-image {
+    width: 100%;
+    margin-top: 40px;
+  }
+}
+
+
+
+
+/* stat starts here */
+
+/* stat ends here */
+
+
+/* people starts here */
+
+/* people ends here */
+
+
+/* story starts here */
+
+/* story ends here */
+
+
+/* workflow starts here */
+
+/* workflow ends here */
+
+
+/* team starts here */
+
+/* team ends here */
+
+/* brand starts here */
+
+/* brand ends here */
+
+/* test starts here */
+
+.test-thumb{
+  width: 40px;
+  height: 40px;
+}
+
+.test-thumb img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+/* test ends here */
+
+/* article starts here */
+
+.article-card{
+  height: 300px;
+}
+
+.article-body{
+  height: 200px;
+}
+
+.article-image{
+  max-height: 40%;
+}
+
+ .article-img img{
+  width: 100%;
+  height: 100%;
+}
+
+.article-content{
+  height: 50%;
+}
+
+
+/* article ends here */

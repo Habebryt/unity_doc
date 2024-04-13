@@ -1,0 +1,14 @@
+.partner-title{
+    text-align: center;
+}
+
+.partner-logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+}
+
+.partner-logo img{
+    width: 100%;
+}
