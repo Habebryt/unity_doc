@@ -1,0 +1,1055 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+@import url("https://use.fontawesome.com/releases/v6.5.1/css/all.css");
+
+/* Reset and Global Styles */
+:root {
+  --background-color: rgba(250, 251, 244, 1);
+  --sapphire: hsla(221, 65%, 41%, 1);
+  --cadet-gray: hsla(216, 11%, 63%, 1);
+  --cadet-gray-light: rgb(223, 229, 236);
+  --yale-blue: hsla(216, 59%, 25%, 1);
+  --black: hsla(210, 50%, 1%, 1);
+  --sapphire-h: hsla(221, 65%, 41%, 1);
+  --cadet-gray-h: hsla(216, 11%, 63%, 1);
+  --yale-blue-h: hsla(216, 59%, 25%, 1);
+  --black-h: hsla(210, 50%, 1%, 1);
+  --gradient-top: linear-gradient(
+    0deg,
+    #254fadff,
+    #979fabff,
+    #1a3866ff,
+    #010203ff
+  );
+  --gradient-right: linear-gradient(
+    90deg,
+    #254fadff,
+    #979fabff,
+    #1a3866ff,
+    #010203ff
+  );
+  --gradient-bottom: linear-gradient(
+    180deg,
+    #254fadff,
+    #979fabff,
+    #1a3866ff,
+    #010203ff
+  );
+  --gradient-left: linear-gradient(
+    270deg,
+    #254fadff,
+    #979fabff,
+    #1a3866ff,
+    #010203ff
+  );
+  --gradient-top-right: linear-gradient(
+    45deg,
+    #254fadff,
+    #979fabff,
+    #1a3866ff,
+    #010203ff
+  );
+  --gradient-bottom-right: linear-gradient(
+    135deg,
+    #254fadff,
+    #979fabff,
+    #1a3866ff,
+    #010203ff
+  );
+  --gradient-top-left: linear-gradient(
+    225deg,
+    #254fadff,
+    #979fabff,
+    #1a3866ff,
+    #010203ff
+  );
+  --gradient-bottom-left: linear-gradient(
+    315deg,
+    #254fadff,
+    #979fabff,
+    #1a3866ff,
+    #010203ff
+  );
+  --gradient-radial: radial-gradient(
+    #254fadff,
+    #979fabff,
+    #1a3866ff,
+    #010203ff
+  );
+  --margin: 20px;
+  --margin-top: 100px;
+  --margin-bottom: 100px;
+  --margin-left: 25px;
+  --margin-right: 25px;
+  --card-margin: 10px;
+  --card-margin-top: 10px;
+  --card-margin-right: 10px;
+  --card-margin-left: 10px;
+  --card-margin-bottom: 10px;
+  --sub-margin: 20px;
+  --sub-margin-top: 30px;
+  --sub-margin-right: 30px;
+  --sub-margin-bottom: 30px;
+  --sub-margin-left: 30px;
+  --padding: 20px;
+  --padding-top: 20px;
+  --padding-bottom: 20px;
+  --padding-left: 20px;
+  --padding-right: 20px;
+  --sub-padding-top: 25px;
+  --sub-padding-right: 25px;
+  --sub-padding-bottom: 25px;
+  --sub-padding-left: 25px;
+  --border: 1px solid var(--sapphire);
+  --border-left: 1px solid var(--sapphire);
+  --border-right: 1px solid var(--sapphire);
+  --border-top: 1px solid var(--sapphire);
+  --border-bottom: 1px solid var(--sapphire);
+  --card-radius: 10px;
+  --button-radius: 5px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html{
+  text-decoration: none !important;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--background-color);
+}
+/* Reset anchor text decoration */
+
+/* Remove bullet points from list items */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Header Styles */
+header {
+  background-color: var(--background-color);
+  color: var(--yale-blue);
+  padding: 20px;
+}
+
+header.scroll {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+
+/* Navigation Styles */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+/* Hide nav links and buttons when scrolling */
+nav.scroll .nav-links,
+nav.scroll .nav-buttons {
+  display: none;
+}
+
+nav.scroll .burger {
+  display: block;
+}
+
+/* Logo Styles */
+.logo img {
+  height: 40px;
+  transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+  transform: scale(1.2);
+}
+
+/* Navigation links Styles */
+.nav-links {
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links a {
+  color: var(--yale-blue);
+  text-decoration: none;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Visited links color */
+.nav-links a:visited {
+  color: var(--yale-blue);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  background-color: var(--yale-blue);
+  border-radius: var(--button-radius);
+  color: var(--background-color);
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+/* Navigation buttons Styles */
+.nav-buttons {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sign-in {
+  color: var(--background-color);
+  border: var(--border);
+  border-radius: var(--button-radius);
+  padding: 10px 20px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+/* Sign-in button variations */
+.sign-in.get-started {
+  background-color: var(--sapphire);
+}
+
+.sign-in.get-started:hover {
+  background: var(--gradient-bottom-right);
+}
+
+.sign-in.login {
+  background-color: var(--yale-blue);
+}
+
+.sign-in.login:hover {
+  background: var(--gradient-top-left);
+}
+
+/* Burger menu Styles */
+.burger {
+  display: none;
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.burger div {
+  width: 25px;
+  height: 3px;
+  background-color: var(--sapphire);
+  color: var(--background-color);
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+
+/* Active class styles for burger menu */
+.burger.active .line1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.burger.active .line2 {
+  opacity: 0;
+}
+
+.burger.active .line3 {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Active class styles for navigation links */
+.nav-links.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff; /* Change background color as needed */
+  width: 100%;
+  z-index: 10000000000;
+}
+
+/* navbar ends here */
+
+/* Hero CSS Starts Here */
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: calc(100vh - 80px);
+  background: var(--background-color);
+  color: var(--sapphire);
+  padding: 40px;
+  overflow: hidden;
+}
+
+.hero-content {
+  max-width: 500px;
+  z-index: 1;
+}
+
+.hero-content h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.hero-title {
+  color: var(--sapphire);
+}
+
+.hero-sub {
+  color: var(--yale-blue);
+}
+
+.hero-content h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.animated-text {
+  color: #e6e6e6;
+  transition: color 0.5s ease;
+}
+
+.changing-text {
+  animation: changeText 16s infinite;
+}
+
+@keyframes changeText {
+
+  0%,
+  25% {
+    color: var(--sapphire);
+  }
+
+  25%,
+  50% {
+    color: var(--yale-blue);
+  }
+
+  50%,
+  75% {
+    color: var(--cadet-grey);
+  }
+
+  75% {
+    color: var(--black);
+  }
+}
+
+.hero-content p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.hero-image {
+  position: relative;
+  width: 50%;
+  z-index: 0;
+}
+
+.hero-image img {
+  max-width: 100%;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  height: auto;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));
+}
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .hero-title {
+    display: none;
+  }
+
+  .logo img {
+    display: block;
+  }
+
+  .logo a span {
+    display: block;
+    font-size: 1rem;
+    font-weight: 700;
+    align-items: left;
+    color: var(--sapphire);
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .hero-image {
+    width: 100%;
+    margin-top: 40px;
+  }
+}
+
+/* stat starts here */
+
+/* stat ends here */
+
+/* people starts here */
+
+/* people ends here */
+
+/* story starts here */
+
+/* story ends here */
+
+/* workflow starts here */
+
+/* workflow ends here */
+
+/* team starts here */
+
+/* team ends here */
+
+/* brand starts here */
+
+/* brand ends here */
+
+/* test starts here */
+
+.test-thumb {
+  width: 40px;
+  height: 40px;
+}
+
+.test-thumb img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+/* test ends here */
+
+/* article starts here */
+
+.article-card {
+  height: 300px;
+}
+
+.article-body {
+  height: 200px;
+}
+
+.article-image {
+  max-height: 40%;
+}
+
+.article-img img {
+  width: 100%;
+  height: 100%;
+}
+
+.article-content {
+  height: 50%;
+}
+
+/* article ends here */
+
+/* Partner CSS Starts Here */
+.partner {
+  margin-top: var(--margin-top);
+  min-height: 150px;
+}
+
+.partner .partner-title {
+  margin-bottom: var(--sub-margin-bottom);
+}
+
+.partner-title {
+  text-align: center;
+}
+
+.partner-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+}
+
+.partner-logo img {
+  width: 100%;
+}
+
+/* Partner CSS Ends Here */
+
+/* Features CSS Starts Here */
+.features {
+  margin-top: var(--margin-top);
+  background-color: var(--gradient-top-left);
+}
+
+.features-content .d-flex {
+  margin-top: var(--sub-margin-top);
+  margin-bottom: var(--sub-margin-bottom);
+}
+
+.features .card {
+  margin: var(--card-margin-top);
+}
+
+.card .card-logo {
+  margin: var(--card-margin-top);
+}
+
+.card .card-title {
+  margin: var(--card-margin-top);
+}
+
+.card .card-desc {
+  margin: var(--card-margin-top);
+}
+.features {
+  min-height: 450px;
+}
+
+.card {
+  border-radius: 5px;
+  background-color: var(--sapphire);
+  padding: 10px;
+  width: 300px;
+  color: white;
+}
+
+.card-body {
+  background-color: var(--sapphire);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-logo {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: var(--background-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.card-logo img {
+  max-width: 50%;
+  max-height: 50%;
+}
+
+.card-title {
+  text-align: center;
+}
+
+.card-desc {
+  text-align: center;
+}
+
+/* Platform CSS Starts Here */
+
+.platform {
+  margin-top: var(--sub-margin-top);
+  min-height: 20px;
+}
+
+.platform-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.content {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.content h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.content p {
+  margin-bottom: 15px;
+}
+
+.content ul {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.content li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.content li i {
+  margin-right: 10px;
+  color: var(--sapphire);
+}
+
+.learn-more {
+  padding: 10px 20px;
+  background-color: var(--sapphire);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.image-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.top-freelancer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.top-freelancer img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: -10px;
+}
+
+.top-freelancer span {
+  background-color: var(--sapphire);
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.main-image img {
+  width: 300px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.social-media {
+  display: flex;
+  margin-top: -110px;
+  margin-left: -200px;
+  max-width: 150px;
+  flex-wrap: wrap;
+  border-radius: 5px;
+  background-color: white;
+  height: 200px;
+  padding: 10px;
+  color: black;
+}
+
+.social-item {
+  display: flex;
+  align-items: center;
+  margin: 10px 10px;
+}
+
+.social-item i {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.social-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.social-text span:first-child {
+  font-weight: bold;
+}
+
+.social-text span:last-child {
+  font-size: 12px;
+  color: gray;
+}
+
+.platform-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.platform-top .image-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 20px;
+}
+
+.platform-top .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.platform-top .header select {
+  padding: 5px;
+}
+
+.platform-top .image-section img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.platform-top .expert-team {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.platform-top .team-members {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.platform-top .team-members img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: -5px;
+}
+
+.platform-top .more-members {
+  background-color: var(--sapphire);
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.platform-top .content-section {
+  flex: 1;
+  padding-left: 20px;
+}
+
+.platform-top .content-section h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.platform-top .content-section p {
+  margin-bottom: 15px;
+}
+
+.platform-top .content-section ul {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.platform-top .content-section li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.platform-top .content-section li i {
+  margin-right: 10px;
+  color: var(--sapphire);
+}
+
+.platform-top .learn-more {
+  padding: 10px 20px;
+  background-color: var(--sapphire);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* Review CSS Starts Here */
+
+.review {
+  margin-top: var(--margin-top);
+  min-height: 400px;
+}
+
+.review .review-title {
+  margin-bottom: var(--margin);
+  margin-top: var(--margin);
+}
+
+.review .review-comments {
+  margin-bottom: var(--margin);
+}
+
+.customer-feedback-card {
+  margin-top: var(--margin);
+}
+
+.customer-feedback-card {
+  background-color: #f8f9fa;
+  padding: 20px;
+  height: 100%;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.customer-feedback-card h3 {
+  margin-top: 0;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: none;
+}
+
+button[type="submit"] {
+  background-color: var(--sapphire);
+  color: var(--background-color);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#customer-feedback-list {
+  list-style-type: none;
+  padding: 0;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.customer-feedback-item {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.customer-feedback-item h4 {
+  margin-top: 0;
+}
+
+.customer-feedback-item p {
+  margin-bottom: 0;
+}
+
+.see-more-btn {
+  background-color: var(--sapphire);
+  color: var(--background-color);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: none;
+  margin-top: 10px;
+}
+
+/* Trial CSS Starts Here */
+
+.trial {
+  margin-top: var(--margin-top);
+  min-height: 150px;
+}
+.wrapper {
+  width: 300px;
+  max-width: 100%;
+  position: relative;
+  justify-content: center;
+}
+
+.wrapper .input {
+  background: rgba(255, 255, 255, 0.3);
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 1rem;
+  width: 100%;
+}
+
+.wrapper .button {
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  padding: 15px;
+}
+
+.trial .row {
+  justify-content: center;
+  margin: var(--margin);
+}
+
+.trial .trial-body {
+  background-color: var(--cadet-gray-light);
+  margin: var(--margin);
+  justify-content: center;
+  text-align: center;
+  border-radius: var(--card-radius);
+}
+
+.trial-body .form {
+  display: flex;
+  justify-content: center;
+  margin: var(--margin);
+}
+
+.trial-title {
+  margin: var(--margin);
+}
+
+.trial-paragraph span {
+  color: var(--yale-blue);
+}
+
+.trial .form .button {
+  background-color: var(--sapphire);
+  color: var(--background-color);
+}
+
+/* Footer CSS Starts Here */
+
+.footer {
+  margin-top: var(--margin-top);
+  min-height: 300px;
+}
+
+.footer-top {
+  margin-top: var(--sub-margin);
+  margin-bottom: var(--sub-margin);
+}
+
+.footer-top p {
+  line-height: 1.7rem;
+}
+
+.footer-top a i {
+  font-size: 24px;
+}
+
+.footer-title {
+  margin-bottom: var(--sub-margin);
+}
+
+.footer-ul li {
+  margin-bottom: var(--sub-margin);
+}
+
+.copyright {
+  margin: var(--margin);
+  min-height: 10px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Media Queries for Responsiveness */
+@media screen and (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    padding: 20px;
+  }
+
+  .nav-links li {
+    margin-bottom: 10px;
+  }
+
+  .nav-buttons {
+    display: none;
+  }
+
+  .burger {
+    display: block;
+    color: var(--sapphire) !important;
+  }
+
+  .nav-active {
+    display: flex;
+  }
+
+  .toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+    color: var(--sapphire);
+  }
+
+  .toggle .line2 {
+    opacity: 0;
+    color: var(--sapphire);
+  }
+
+  .toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+    color: var(--sapphire);
+  }
+
+  .footer-body {
+    display: flex;
+  }
+  .footer-top {
+    width: 30%;
+  }
+
+  .footer-ul {
+    width: 30%;
+  }
+}
