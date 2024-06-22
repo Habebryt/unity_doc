@@ -1,56 +1,64 @@
 <?php
 ini_set("display_errors", "1");
-error_reporting(E_ALL);
 session_start();
-
 require_once "../classes/User.php";
 require_once "../classes/Utilities.php";
 
-// Retrieve and Sanitize form Data
+$user = new User;
 
-if (isset($_POST["register"])) {
-    $firstname = Utilities::firstName($_POST["firstName"]);
-    $lastname = Utilities::lastName($_POST['lastName']);
-    $email = Utilities::email($_POST['email']);
-    $password = $_POST["password"];
+$email = $_POST['user_email'];
+$org = $_POST['user_org'];
 
-    if (empty($firstname) || empty($lastname)|| empty($email) || empty($password)){
-            
-        // first step validation
-        $response = [
-                "success" => false,
-                "message" => "All fields are required"
-            ];
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $email !== '' && $org !== '') {
+    // Retrieve form data and sanitize
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
+    $email;
+    $org;
+    $password = $_POST['user_password'];
 
-            $response = json_encode($response);
-            echo $response;
-            die();
+    // Validate form fields 
+    $errors = [];
+    if (empty($firstname)) {
+        $errors[] = "Firstname Field Cannot be Missing";
+    }
+    if (empty($lastname)) {
+        $errors[] = "Lastname Field Cannot be Missing";
+    }
+    if (empty($email)) {
+        $errors[] = "Email Field Cannot be Empty";
+    }
+    if (empty($org)) {
+        $errors[] = "Select Organization";
+    }
+    if (empty($password)) {
+        $errors[] = "Password Field Cannot be Empty";
     }
 
-    //other validations
+    if (empty($errors)) {
+        $register = $user->registerUser($firstname, $lastname, $email, $password, $org);
 
-    //give the values to a method that will save in database
-    $register = new User;
-    $register = $register->registerUser($firstname, $lastname, $email, $password);
-
-    //response to user
-
-    if($register){
-        $response = [
-            "success" => true,
-            "message" => "Hey " .ucwords($firstname). ". Your registration on UnityDocs is Successful."
-        ];
-        $response = json_encode($response);
-        echo $response;
+        if ($register) {
+            // Registration successful, set user session and redirect to dashboard
+            $_SESSION['orgadminonline'] = $register;
+            header("location: ../dashboard.php");
+            exit();
+        } else {
+            // Registration failed, store errors in session and redirect to registration page
+            $errors[] = "Registration failed. Please try again.";
+            $_SESSION['user_errormsg'] = $errors;
+            header("location: ../index.php");
+            exit();
+        }
+    } else {
+        // Validation errors, store errors in session and redirect to registration page
+        $_SESSION['user_errormsg'] = $errors;
+        header("location: ../index.php");
+        exit();
     }
-
-    
-
 } else {
-    echo "Sorry you are not passing anything to me";
+    // Visited the page directly
+    $_SESSION['user_errormsg'] = "Please complete the form";
+    header("location: ../index.php");
+    exit();
 }
-
-
-
-
-?>

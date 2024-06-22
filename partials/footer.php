@@ -102,11 +102,11 @@
 </script>
 <script>
     function redirectToEmployerLogin() {
-    window.location.href = "employer/login.php";
+    window.location.href = "employer/index.php";
   }
 
   function redirectToEmployeeLogin() {
-    window.location.href = "employee/login.php";
+    window.location.href = "employee/index.php";
   }
 
   // Add click event listener to the login button

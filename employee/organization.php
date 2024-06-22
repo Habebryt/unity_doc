@@ -1,188 +1,75 @@
 <?php
-ini_set("display_errors", "1");
 session_start();
-require_once "employee_guard.php";
+ini_set("display_errors", "1");
+require_once "partials/header.php";
+require_once "classes/Team.php";
 
-// echo "<pre>";
-// print_r($_SESSION);
-// echo "</pre>";
 
-// $user = ($_SESSION['useronline']);
-// echo $user ['firstname'];
-
+//$members = $teams->getTeamMembers();
 ?>
 
-<!-- Header Here -->
-<?php require_once "partials/header.php"; ?>
-<!-- Header Ends Here -->
-<!-- Aside Content Starts Here -->
-<?php require_once "partials/aside.php"; ?>
-<!-- Aside Content Ends Here -->
-<!-- Main Content Starts Here -->
-<main>
-    <h1>Dashboard</h1>
-    <div class="date">
-        <input type="date" />
-    </div>
-    <div class="search">
-        <input type="search" placeholder="Search" />
-    </div>
+<!-- ========================= Main ==================== -->
+<div class="main">
+  <!--  =============================TopBar ============================= -->
+  <?php
+  require_once "partials/tab.php";
 
-    <!-- Insights -->
-    <?php require_once "partials/insights.php"; ?>
+  $user = $_SESSION['useronline'];
 
-    <!-- Documents Table -->
-    <div class="recent-docs">
-        <h2>Recent Documents</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Document Name</th>
-                    <th>Document Tags</th>
-                    <th>Creator</th>
-                    <th>Collaborators</th>
-                    <th>Status</th>
-                    <th>Upload Date</th>
-                    <th>Activity</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Cloud Engineering</td>
-                    <td><span>Cloud</span> <span>Engineering</span></td>
-                    <td>Habeeb B.</td>
-                    <td>2</td>
-                    <td><span class="success">Active</span></td>
-                    <td>27th - April - 2024</td>
-                    <td>Update</td>
-                </tr>
-                <tr>
-                    <td>Cloud Engineering</td>
-                    <td><span>Cloud</span> <span>Engineering</span></td>
-                    <td>Habeeb B.</td>
-                    <td>2</td>
-                    <td><span class="success">Active</span></td>
-                    <td>27th - April - 2024</td>
-                    <td>Update</td>
-                </tr>
-                <tr>
-                    <td>Cloud Engineering</td>
-                    <td><span>Cloud</span> <span>Engineering</span></td>
-                    <td>Habeeb B.</td>
-                    <td>2</td>
-                    <td><span class="success">Active</span></td>
-                    <td>27th - April - 2024</td>
-                    <td>Update</td>
-                </tr>
-                <tr>
-                    <td>Cloud Engineering</td>
-                    <td><span>Cloud</span> <span>Engineering</span></td>
-                    <td>Habeeb B.</td>
-                    <td>2</td>
-                    <td><span class="success">Active</span></td>
-                    <td>27th - April - 2024</td>
-                    <td>Update</td>
-                </tr>
-                <tr>
-                    <td>Cloud Engineering</td>
-                    <td><span>Cloud</span> <span>Engineering</span></td>
-                    <td>Habeeb B.</td>
-                    <td>2</td>
-                    <td><span class="success">Active</span></td>
-                    <td>27th - April - 2024</td>
-                    <td>Update</td>
-                </tr>
-                <tr>
-                    <td>Cloud Engineering</td>
-                    <td><span>Cloud</span> <span>Engineering</span></td>
-                    <td>Habeeb B.</td>
-                    <td>2</td>
-                    <td><span class="success">Active</span></td>
-                    <td>27th - April - 2024</td>
-                    <td>Update</td>
-                </tr>
-            </tbody>
-        </table>
-        <a href="#">View All</a>
+  $userOrg = $user['user_org'];
+
+  $teams = new Team;
+  $members = $teams->getTeamMembers($userOrg);
+  ?>
+  <!--  =============================TopBar Ends Here ============================= -->
+  <!-- ================ Organization Details List ================= -->
+  <div class="container">
+    <div class="row justify-content-center mt-4">
+      <div class="col-md-10">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h3>Organization Members & Teams</h3>
+          <div>
+            <button class="btn btn-primary mr-2">Invite Member</button>
+            <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#addTeam">Add Team</button>
+          </div>
+        </div>
+        <div class="d-flex flex-wrap">
+          <?php foreach ($members as $member) { ?>
+            <div class="card mx-2 my-2" style="width: 18rem;">
+              <div class="card-body">
+                <div class="d-flex align-items-center mb-3">
+                  <img src="uploads/<?php echo $member['profile_image']; ?>" class="rounded-circle me-3" alt="User Avatar" style="width: 60px; height: 60px;">
+                  <div>
+                    <h5 class="card-title mb-0"><?php echo $member['firstname'] . " " . $member['lastname']; ?></h5>
+                    <?php if (isset($member['user_role'])) { ?>
+                      <p class="card-text mb-0"><small class="text-muted btn badge badge-pill badge-dark text-bg-secondary"><?php echo $member['user_role']; ?></small></p>
+                    <?php } ?>
+                  </div>
+                </div>
+                <ul class="list-unstyled mb-0">
+                  <li class="mb-1"><i class="bi bi-envelope me-2"></i><?php echo $member['user_email']; ?></li>
+                  <?php if (isset($member[''])) { ?>
+                    <li class="mb-1"><i class="bi bi-telephone me-2"></i><?php echo $member['']; ?></li>
+                  <?php } ?>
+                  <?php if (isset($member[''])) { ?>
+                    <li class="mb-1"><i class="bi bi-at me-2"></i><?php echo $member['']; ?></li>
+                  <?php } ?>
+                  <?php if (isset($member[''])) { ?>
+                    <li class="mb-1"><i class="bi bi-globe me-2"></i><?php echo $member['']; ?></li>
+                  <?php } ?>
+                  <?php if (isset($member[''])) { ?>
+                    <li class="mb-1"><i class="bi bi-geo-alt me-2"></i><?php echo $member['']; ?></li>
+                  <?php } ?>
+                </ul>
+              </div>
+            </div>
+          <?php } ?>
+        </div>
+      </div>
     </div>
-</main>
-<!-- Main Content Ends Here -->
-<!-- Right Sidebar -->
-<div class="right">
-    <!-- Top Section -->
-    <div class="top">
-        <button class="menu-btn">
-            <span class="material-symbols-outlined"> menu </span>
-        </button>
-        <div class="theme-toggler">
-            <span class="material-symbols-outlined active"> light_mode </span>
-            <span class="material-symbols-outlined"> dark_mode </span>
-        </div>
-        <div class="user-info">
-            <p>Hey,
-                <span><?php
-                        echo $user["firstname"];
-                        ?></span>
-            </p>
-            <small class="muted-text"><?php
-                                        echo $user["user_role"];
-                                        ?></small>
-        </div>
-    </div>
-    <!-- Notifications -->
-    <div class="recent-notifications">
-        <h2>Recent Notifications</h2>
-        <div class="notifications">
-            <div class="notification">
-                <div class="profile-pic">
-                    <img src="assets/statics/images/feedback/customer_12.jpg" alt="" />
-                </div>
-                <div class="message">
-                    <p><b>John Blessing</b> Shared A Document with you.</p>
-                    <small class="text-muted"> 2 Minutes Ago</small>
-                </div>
-            </div>
-            <div class="notification">
-                <div class="profile-pic">
-                    <img src="assets/statics/images/feedback/customer_11.jpg" alt="" />
-                </div>
-                <div class="message">
-                    <p><b>Alex Paul</b> Dropped a Comment on a Shared Document.</p>
-                    <small class="text-muted"> 2 Hours Ago</small>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="doc-analytics">
-        <h2>My Documents</h2>
-        <div class="uploaded docs">
-            <div class="icon">
-                <span class="material-symbols-outlined"> upload </span>
-            </div>
-            <div class="right">
-                <div class="info">
-                    <h3>Uploaded.</h3>
-                    <small>Last 24 Hours.</small>
-                </div>
-                <h5 class="success">+20</h5>
-                <h3>Total Docs: <span>56</span></h3>
-            </div>
-        </div>
-        <div class="shared docs">
-            <div class="icon">
-                <span class="material-symbols-outlined"> share </span>
-            </div>
-            <div class="right">
-                <div class="info">
-                    <h3>Shared.</h3>
-                    <small>Last 24 Hours.</small>
-                </div>
-                <h5 class="warning">0</h5>
-                <h3>Total Shared: <span>40</span></h3>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Footer Here -->
-<?php require_once "partials/footer.php"; ?>
-<!-- Footer Ends Here -->
+  </div>
+  <!--++++++++++Footer+++++++++++++++++++++  -->
+
+  <?php
+  require_once "partials/footer.php";
+  ?>

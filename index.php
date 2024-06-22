@@ -10,8 +10,7 @@ require_once "partials/header.php";
                     <h1 class="hero-title">UnityDocs</h1>
                     <h2 class="animated-text"><span class="hero-sub">Document</span> <span class="changing-text">Management.</span></h2>
                     <p>Simple, secure, and collaborative document management solution.</p>
-                    <!-- <button class="moving-border"><a href="../admin/login_signup.html"></a>Get Started</button> -->
-                    <a class="moving-border" href="access.php">Get Started</a>
+                    <a class="moving-border" href="employer/index.php">Get Started</a>
                 </div>
                 <div class="hero-image">
                     <img id="animatedImage" src="assets/statics/images/hero/access.jpeg" alt="">
@@ -22,7 +21,7 @@ require_once "partials/header.php";
 </div>
 <!-- hero sections ends here -->
 <!-- parterns section starts here -->
-<section class="partner container">
+<section class="partner container" id="partner">
     <div class="row">
         <div class="col-sm-12 col-md-12">
             <h2 class="partner-title">Trusted by over a lot of companies</h2>
@@ -58,7 +57,7 @@ require_once "partials/header.php";
 </section>
 <!-- parterns section ends here -->
 <!-- features section starts here -->
-<section class="features container">
+<section class="features container" id="features">
     <div class="row justify-content-evenly features-content">
         <div class="col-sm-12 col-md-4 d-flex justify-content-evenly">
             <h2>Best features for Document Sharing</h2>
@@ -236,7 +235,7 @@ require_once "partials/header.php";
 </section>
 <!-- platform section ends here -->
 <!-- review section starts here -->
-<section class="review container">
+<section class="review container" id="feedback">
     <div class="row">
         <div class="col-md-12 d-flex justify-content-center">
             <h2 class="review-title">What people are saying</h2>

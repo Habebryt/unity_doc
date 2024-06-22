@@ -1,5 +1,6 @@
 <?php
 ini_set("display_errors", "1");
+// session_start();
 error_reporting(E_ALL);
 
 require_once "Db.php";
@@ -66,12 +67,54 @@ class User extends Db
             return false;
         }
     }
+
+    public function trialRegister($firstname, $lastname, $email)
+    {
+        try{
+            $this->conn->beginTransaction();
     
-
-
-
-
-
+            $sql = "INSERT INTO TRIALS (firstname, lastname, trial_email) VALUES (?, ?, ?)";
+            $stmt = $this->conn->prepare($sql);
+            $result = $stmt->execute([$firstname, $lastname, $email]);
+    
+            if ($result) {
+                // Trial registration successful, fetch trial user details
+                $trial_user = $this->conn->lastInsertId();
+                $sql = "SELECT * FROM TRIALS WHERE trial_id = $trial_user";
+                $stmt = $this->conn->prepare($sql);
+                $stmt->execute([$trial_user]);
+                $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+                // Commit registration
+                $this->conn->commit();
+    
+                return $user;
+            } else {
+                // Rollback registration if registration fails
+                $this->conn->rollBack();
+    
+                // Registration failed
+                $_SESSION['user_errormsg'] = "Failed to register trial user. Please try again.";
+                return false;
+            }
+        } catch (PDOException $p) {
+            // Set error message
+            $_SESSION['user_errormsg'] = $p->getMessage();
+    
+            // Rollback the transaction
+            $this->conn->rollBack();
+    
+            return false;
+        } catch (Exception $e) {
+            // Set error message
+            $_SESSION['user_errormsg'] = $e->getMessage();
+    
+            // Rollback the transaction
+            $this->conn->rollBack();
+    
+            return false;
+        }
+    }
 
     public function loginUser($email, $password)
     {
@@ -106,9 +149,7 @@ class User extends Db
             return 0;
         }
     }
-
-
-
+    
     public function profileUpdate()
     {
         return "UnityDocs User profile updated Successfully";
@@ -121,6 +162,9 @@ class User extends Db
     }
 }
 
-// $newUser = new User;
-// $user = $newUser->registerUser('habeeb', 'bright', 'habeeb@gmail.com', 'habeeb1234');
-// echo "$user";
+$newUser = new User;
+$user = $newUser->trialRegister('habeeb', 'bright', 'habeeb2@gmail.com');
+
+echo "<pre>";
+print_r($user);
+echo "</pre>";

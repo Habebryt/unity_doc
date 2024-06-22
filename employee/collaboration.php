@@ -1,188 +1,172 @@
 <?php
+
 ini_set("display_errors", "1");
 session_start();
 require_once "employee_guard.php";
+require_once "classes/User.php";
+require_once "classes/Document.php";
+require_once "classes/Utilities.php";
+require_once "classes/Share.php";
 
-// echo "<pre>";
-// print_r($_SESSION);
-// echo "</pre>";
 
-// $user = ($_SESSION['useronline']);
-// echo $user ['firstname'];
+$id = $_SESSION['useronline'];
+
+$userId = $id['idusers'];
+$docs = new Share;
+$documents = $docs->sharedDocs($userId);
+
+$tableLimit = isset($_GET['limit']) ? intval($_GET['limit']) : 10;
+
+$totalPages = ceil(count($documents) / $tableLimit);
+
+$page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+
+$offset = ($page - 1) * $tableLimit;
+
+$currentPageDocuments = array_slice($documents, $offset, $tableLimit);
+
+$maxDocumentsPerPage = count($documents);
+
+$limitOptions = array();
+for ($i = 5; $i <= $maxDocumentsPerPage; $i += 5) {
+    $limitOptions[] = $i;
+}
+
+
+
+
+$user = new User;
+$userId = $user->getUserById($id);  //Get user details by ID
+
+$getUser = new User;
+$user = $getUser->getUser($_SESSION['useronline']);
+
 
 ?>
 
-<!-- Header Here -->
-<?php require_once "partials/header.php"; ?>
-<!-- Header Ends Here -->
-<!-- Aside Content Starts Here -->
-<?php require_once "partials/aside.php"; ?>
-<!-- Aside Content Ends Here -->
-<!-- Main Content Starts Here -->
-<main>
-    <h1>Dashboard</h1>
-    <div class="date">
-        <input type="date" />
-    </div>
-    <div class="search">
-        <input type="search" placeholder="Search" />
-    </div>
+<?php require_once "partials/header.php" ?>
 
-    <!-- Insights -->
-    <?php require_once "partials/insights.php"; ?>
+<!-- ========================= Main ==================== -->
+<div class="main">
+    <!--  =============================TopBar ============================= -->
+    <?php require_once "partials/tab.php" ?>
+    <!--  =============================TopBar Ends Here ============================= -->
+    <!-- ================ Document Details List ================= -->
+    <div class="details">
+        <div class="alert-fly">
+            <?php if (isset($_SESSION['collab_success'])) : ?>
+                <div class="alert alert-primary alert-dismissible text-center alert-fly"><?php echo $_SESSION['collab_success']; ?></div>
+                <?php unset($_SESSION['collab_success']); ?>
+            <?php endif; ?>
+            <?php if (isset($_SESSION['collab_error'])) : ?>
+                <div class="alert alert-danger text-center alert-fly"><?php echo $_SESSION['collab_error']; ?></div>
+                <?php unset($_SESSION['collab_error']); ?>
+            <?php endif; ?>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="recentDocs">
+                    <div class="cardHeader d-flex justify-content-between align-items-center">
+                        <h2>Recently Shared</h2>
+                        <a class="btn btn-primary d-flex justify-content-between" data-bs-target="#shareDoc" data-bs-toggle="modal">
+                            <div class="iconBx">
+                                <ion-icon name="share-outline"></ion-icon>
+                            </div>Share Document
+                        </a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Doc Title</th>
+                                    <th scope="col">Creator</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Shared With</th>
+                                    <th scope="col">Shared Date</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($currentPageDocuments as $userdocuments) : ?>
 
-    <!-- Documents Table -->
-    <div class="recent-docs">
-        <h2>Recent Documents</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Document Name</th>
-                    <th>Document Tags</th>
-                    <th>Creator</th>
-                    <th>Collaborators</th>
-                    <th>Status</th>
-                    <th>Upload Date</th>
-                    <th>Activity</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Cloud Engineering</td>
-                    <td><span>Cloud</span> <span>Engineering</span></td>
-                    <td>Habeeb B.</td>
-                    <td>2</td>
-                    <td><span class="success">Active</span></td>
-                    <td>27th - April - 2024</td>
-                    <td>Update</td>
-                </tr>
-                <tr>
-                    <td>Cloud Engineering</td>
-                    <td><span>Cloud</span> <span>Engineering</span></td>
-                    <td>Habeeb B.</td>
-                    <td>2</td>
-                    <td><span class="success">Active</span></td>
-                    <td>27th - April - 2024</td>
-                    <td>Update</td>
-                </tr>
-                <tr>
-                    <td>Cloud Engineering</td>
-                    <td><span>Cloud</span> <span>Engineering</span></td>
-                    <td>Habeeb B.</td>
-                    <td>2</td>
-                    <td><span class="success">Active</span></td>
-                    <td>27th - April - 2024</td>
-                    <td>Update</td>
-                </tr>
-                <tr>
-                    <td>Cloud Engineering</td>
-                    <td><span>Cloud</span> <span>Engineering</span></td>
-                    <td>Habeeb B.</td>
-                    <td>2</td>
-                    <td><span class="success">Active</span></td>
-                    <td>27th - April - 2024</td>
-                    <td>Update</td>
-                </tr>
-                <tr>
-                    <td>Cloud Engineering</td>
-                    <td><span>Cloud</span> <span>Engineering</span></td>
-                    <td>Habeeb B.</td>
-                    <td>2</td>
-                    <td><span class="success">Active</span></td>
-                    <td>27th - April - 2024</td>
-                    <td>Update</td>
-                </tr>
-                <tr>
-                    <td>Cloud Engineering</td>
-                    <td><span>Cloud</span> <span>Engineering</span></td>
-                    <td>Habeeb B.</td>
-                    <td>2</td>
-                    <td><span class="success">Active</span></td>
-                    <td>27th - April - 2024</td>
-                    <td>Update</td>
-                </tr>
-            </tbody>
-        </table>
-        <a href="#">View All</a>
-    </div>
-</main>
-<!-- Main Content Ends Here -->
-<!-- Right Sidebar -->
-<div class="right">
-    <!-- Top Section -->
-    <div class="top">
-        <button class="menu-btn">
-            <span class="material-symbols-outlined"> menu </span>
-        </button>
-        <div class="theme-toggler">
-            <span class="material-symbols-outlined active"> light_mode </span>
-            <span class="material-symbols-outlined"> dark_mode </span>
-        </div>
-        <div class="user-info">
-            <p>Hey,
-                <span><?php
-                        echo $user["firstname"];
-                        ?></span>
-            </p>
-            <small class="muted-text"><?php
-                                        echo $user["user_role"];
-                                        ?></small>
-        </div>
-    </div>
-    <!-- Notifications -->
-    <div class="recent-notifications">
-        <h2>Recent Notifications</h2>
-        <div class="notifications">
-            <div class="notification">
-                <div class="profile-pic">
-                    <img src="assets/statics/images/feedback/customer_12.jpg" alt="" />
+                                    <tr>
+                                        <td><?php echo Utilities::reduceTitle($userdocuments['doc_title']); ?></td>
+                                        <td>
+                                            <div class="row justify-content-evenly align-content-center">
+                                                <div class="col-md-2">
+                                                    <div style="border: 2px solid blue; border-radius: 50%; width: 30px; height: 30px;">
+                                                        <?php if (isset($userdocuments['shared_by_profile_image'])) { ?>
+                                                            <img src="uploads/<?php echo $userdocuments['shared_by_profile_image'] ?>" alt="" style="width: 100%; height: 100%; border-radius: 50%;">
+                                                        <?php } else { ?>
+                                                            <img src="uploads/<?php echo $userdocuments['shared_by_default_image'] ?>" alt="default_image" style="width: 100%; height: 100%; border-radius: 50%;">
+                                                        <?php  } ?>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 mx-auto">
+                                                    <?php echo $userdocuments['shared_by_firstname'] . " " . Utilities::getFirstLetterOfLastName($userdocuments['shared_by_lastname']); ?>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td><?php echo Utilities::reduceDesc($userdocuments['collaboration_desc']); ?></td>
+                                        <td>
+                                            <div class="row justify-content-evenly align-content-center">
+                                                <div class="col-md-2">
+                                                    <div style="border: 2px solid blue; border-radius: 50%; width: 30px; height: 30px;">
+                                                        <?php if (isset($userdocuments['shared_with_profile_image'])) { ?>
+                                                            <img src="uploads/<?php echo $userdocuments['shared_with_profile_image'] ?>" alt="" style="width: 100%; height: 100%; border-radius: 50%;">
+                                                        <?php } else { ?>
+                                                            <img src="uploads/<?php echo $userdocuments['shared_with_default_image'] ?>" alt="default_image" style="width: 100%; height: 100%; border-radius: 50%;">
+                                                        <?php  } ?>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 mx-auto">
+                                                    <?php echo $userdocuments['shared_with_firstname'] . " " . Utilities::getFirstLetterOfLastName($userdocuments['shared_with_lastname']); ?>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td><?php echo Utilities::getDateParts($userdocuments['upload_date']);  ?></td>
+                                        <td>
+                                            <button class="btn btn-primary view-doc-btn" data-bs-toggle="modal" data-bs-target="#viewSharedDoc" data-user="<?php echo $userdocuments['idshared_doc']; ?>" onclick="viewSharedDocument(this)">
+                                                View
+                                            </button>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="container">
+                        <form class="row g-3" action="" method="get">
+                            <?php if ($limitOptions < 10) { ?>
+                                <div class="col-auto">
+                                    <label for="limit" class="col-form-label">Rows per Page:</label>
+                                </div>
+                                <div class="col-auto">
+
+                                    <select class="form-select" name="limit" id="limit">
+                                        <?php foreach ($limitOptions as $option) : ?>
+                                            <option value="<?php echo $option; ?>" <?php if ($tableLimit == $option) echo "selected"; ?>><?php echo $option; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                                <div class="col-auto">
+                                    <input type="submit" class="btn btn-primary" value="Apply">
+                                </div>
+                            <?php } ?>
+                    </div>
+                    </form>
                 </div>
-                <div class="message">
-                    <p><b>John Blessing</b> Shared A Document with you.</p>
-                    <small class="text-muted"> 2 Minutes Ago</small>
-                </div>
-            </div>
-            <div class="notification">
-                <div class="profile-pic">
-                    <img src="assets/statics/images/feedback/customer_11.jpg" alt="" />
-                </div>
-                <div class="message">
-                    <p><b>Alex Paul</b> Dropped a Comment on a Shared Document.</p>
-                    <small class="text-muted"> 2 Hours Ago</small>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="doc-analytics">
-        <h2>My Documents</h2>
-        <div class="uploaded docs">
-            <div class="icon">
-                <span class="material-symbols-outlined"> upload </span>
-            </div>
-            <div class="right">
-                <div class="info">
-                    <h3>Uploaded.</h3>
-                    <small>Last 24 Hours.</small>
-                </div>
-                <h5 class="success">+20</h5>
-                <h3>Total Docs: <span>56</span></h3>
-            </div>
-        </div>
-        <div class="shared docs">
-            <div class="icon">
-                <span class="material-symbols-outlined"> share </span>
-            </div>
-            <div class="right">
-                <div class="info">
-                    <h3>Shared.</h3>
-                    <small>Last 24 Hours.</small>
-                </div>
-                <h5 class="warning">0</h5>
-                <h3>Total Shared: <span>40</span></h3>
+
             </div>
         </div>
     </div>
 </div>
-<!-- Footer Here -->
-<?php require_once "partials/footer.php"; ?>
-<!-- Footer Ends Here -->
+<div class="row">
+    <div class="col-md-12 d-flex justify-content-center">
+        <a href="?limit=<?php echo count($documents); ?>" class="btn btn-primary">View All</a>
+    </div>
+</div>
+<!--++++++++++Footer+++++++++++++++++++++  -->
+<?php
+require_once "partials/footer.php";
+?>

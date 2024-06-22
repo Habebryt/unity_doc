@@ -1,188 +1,81 @@
 <?php
-ini_set("display_errors", "1");
+require_once "partials/header.php";
 session_start();
+
 require_once "employee_guard.php";
+require_once "classes/Document.php";
+require_once "classes/User.php";
+require_once "classes/Utilities.php";
 
-// echo "<pre>";
-// print_r($_SESSION);
-// echo "</pre>";
+$id = $_SESSION['useronline'];
 
-// $user = ($_SESSION['useronline']);
-// echo $user ['firstname'];
+$userId = $id['idusers'];
+
+$user = new User;
+$thisUser = $user->getUser($userId);
+
 
 ?>
+<!-- ========================= Main ==================== -->
+<div class="main">
+  <!--  =============================TopBar ============================= -->
+  <?php
+  require_once "partials/tab.php";
+  ?>
+  <!--  =============================TopBar Ends Here ============================= -->
+  <!-- ================ Support Details List ================= -->
+  <div class="container mt-3">
+    <div class="row justify-content-around">
+      <div class="col-md-8">
+        <div class="text-center mb-4">
+          <span class="btn badge badge-pill badge-dark text-bg-dark">For Support online</span>
+          <span class="btn badge badge-pill badge-dark ml-2 text-bg-dark">Join us</span>
+        </div>
+        <h1 class="text-center text-dark mb-4">Lets Have a Chat 👋</h1>
+        <p class="text-center text-secondary mb-5">Questions about UnityDocs, or just want to say hello? We're here to help</p>
+        <form id="supportForm">
+          <!-- Feedback response div -->
+          <div id="responseMessage" class="mt-3 text-center"></div>
+          <div class="form-row d-flex justify-content-evenly">
+            <div class="col-md-6 mb-3">
+              <label for="firstName" class="text-dark">First name</label>
+              <input type="text" class="form-control" name="firstname" id="firstName" placeholder="First name" value="<?php echo $thisUser['firstname'] ?>" readonly>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="lastName" class="text-dark">Last name</label>
+              <input type="text" class="form-control" name="lastname" id="lastName" placeholder="Last name" value="<?php echo $thisUser['lastname'] ?>" readonly>
+            </div>
+          </div>
+          <div class="form-row d-flex justify-content-between">
+            <div class="col-md-6 mb-3">
+              <label for="email" class="text-dark">Email</label>
+              <input type="email" class="form-control" name="email" id="email" placeholder="Email" value="<?php echo $thisUser['user_email'] ?>" readonly>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="subject" class="text-dark">Subject</label>
+              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group mb-4">
+              <label for="message" class="text-dark">Message</label>
+              <textarea class="form-control" name="message" id="message" placeholder="Hey, I have some issues activating my account...👨‍💻"></textarea>
+            </div>
+          </div>
+          <div class="text-center">
+            <!-- <input type="number" value="1" hidden name="userStatus"> -->
+            <button type="submit" class="btn btn-primary btn-lg col-md-6">Send message</button>
+          </div>
+        </form>
+        <!-- Loading bar -->
+        <div id="loadingBar" class="progress mt-3" style="display:none;">
+          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--++++++++++Footer+++++++++++++++++++++  -->
 
-<!-- Header Here -->
-<?php require_once "partials/header.php"; ?>
-<!-- Header Ends Here -->
-<!-- Aside Content Starts Here -->
-<?php require_once "partials/aside.php"; ?>
-<!-- Aside Content Ends Here -->
-<!-- Main Content Starts Here -->
-<main>
-    <h1>Dashboard</h1>
-    <div class="date">
-        <input type="date" />
-    </div>
-    <div class="search">
-        <input type="search" placeholder="Search" />
-    </div>
-
-    <!-- Insights -->
-    <?php require_once "partials/insights.php"; ?>
-
-    <!-- Documents Table -->
-    <div class="recent-docs">
-        <h2>Recent Documents</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Document Name</th>
-                    <th>Document Tags</th>
-                    <th>Creator</th>
-                    <th>Collaborators</th>
-                    <th>Status</th>
-                    <th>Upload Date</th>
-                    <th>Activity</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Cloud Engineering</td>
-                    <td><span>Cloud</span> <span>Engineering</span></td>
-                    <td>Habeeb B.</td>
-                    <td>2</td>
-                    <td><span class="success">Active</span></td>
-                    <td>27th - April - 2024</td>
-                    <td>Update</td>
-                </tr>
-                <tr>
-                    <td>Cloud Engineering</td>
-                    <td><span>Cloud</span> <span>Engineering</span></td>
-                    <td>Habeeb B.</td>
-                    <td>2</td>
-                    <td><span class="success">Active</span></td>
-                    <td>27th - April - 2024</td>
-                    <td>Update</td>
-                </tr>
-                <tr>
-                    <td>Cloud Engineering</td>
-                    <td><span>Cloud</span> <span>Engineering</span></td>
-                    <td>Habeeb B.</td>
-                    <td>2</td>
-                    <td><span class="success">Active</span></td>
-                    <td>27th - April - 2024</td>
-                    <td>Update</td>
-                </tr>
-                <tr>
-                    <td>Cloud Engineering</td>
-                    <td><span>Cloud</span> <span>Engineering</span></td>
-                    <td>Habeeb B.</td>
-                    <td>2</td>
-                    <td><span class="success">Active</span></td>
-                    <td>27th - April - 2024</td>
-                    <td>Update</td>
-                </tr>
-                <tr>
-                    <td>Cloud Engineering</td>
-                    <td><span>Cloud</span> <span>Engineering</span></td>
-                    <td>Habeeb B.</td>
-                    <td>2</td>
-                    <td><span class="success">Active</span></td>
-                    <td>27th - April - 2024</td>
-                    <td>Update</td>
-                </tr>
-                <tr>
-                    <td>Cloud Engineering</td>
-                    <td><span>Cloud</span> <span>Engineering</span></td>
-                    <td>Habeeb B.</td>
-                    <td>2</td>
-                    <td><span class="success">Active</span></td>
-                    <td>27th - April - 2024</td>
-                    <td>Update</td>
-                </tr>
-            </tbody>
-        </table>
-        <a href="#">View All</a>
-    </div>
-</main>
-<!-- Main Content Ends Here -->
-<!-- Right Sidebar -->
-<div class="right">
-    <!-- Top Section -->
-    <div class="top">
-        <button class="menu-btn">
-            <span class="material-symbols-outlined"> menu </span>
-        </button>
-        <div class="theme-toggler">
-            <span class="material-symbols-outlined active"> light_mode </span>
-            <span class="material-symbols-outlined"> dark_mode </span>
-        </div>
-        <div class="user-info">
-            <p>Hey,
-                <span><?php
-                        echo $user["firstname"];
-                        ?></span>
-            </p>
-            <small class="muted-text"><?php
-                                        echo $user["user_role"];
-                                        ?></small>
-        </div>
-    </div>
-    <!-- Notifications -->
-    <div class="recent-notifications">
-        <h2>Recent Notifications</h2>
-        <div class="notifications">
-            <div class="notification">
-                <div class="profile-pic">
-                    <img src="assets/statics/images/feedback/customer_12.jpg" alt="" />
-                </div>
-                <div class="message">
-                    <p><b>John Blessing</b> Shared A Document with you.</p>
-                    <small class="text-muted"> 2 Minutes Ago</small>
-                </div>
-            </div>
-            <div class="notification">
-                <div class="profile-pic">
-                    <img src="assets/statics/images/feedback/customer_11.jpg" alt="" />
-                </div>
-                <div class="message">
-                    <p><b>Alex Paul</b> Dropped a Comment on a Shared Document.</p>
-                    <small class="text-muted"> 2 Hours Ago</small>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="doc-analytics">
-        <h2>My Documents</h2>
-        <div class="uploaded docs">
-            <div class="icon">
-                <span class="material-symbols-outlined"> upload </span>
-            </div>
-            <div class="right">
-                <div class="info">
-                    <h3>Uploaded.</h3>
-                    <small>Last 24 Hours.</small>
-                </div>
-                <h5 class="success">+20</h5>
-                <h3>Total Docs: <span>56</span></h3>
-            </div>
-        </div>
-        <div class="shared docs">
-            <div class="icon">
-                <span class="material-symbols-outlined"> share </span>
-            </div>
-            <div class="right">
-                <div class="info">
-                    <h3>Shared.</h3>
-                    <small>Last 24 Hours.</small>
-                </div>
-                <h5 class="warning">0</h5>
-                <h3>Total Shared: <span>40</span></h3>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Footer Here -->
-<?php require_once "partials/footer.php"; ?>
-<!-- Footer Ends Here -->
+  <?php
+  require_once "partials/footer.php";
+  ?>
